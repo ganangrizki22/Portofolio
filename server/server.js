@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
+const { ensureMessagesTable } = require("./config/db");
 const { errorHandler, notFoundHandler } = require("./middleware/errorHandler");
 const profileRoutes = require("./routes/profile.routes");
 const skillsRoutes = require("./routes/skills.routes");
@@ -40,6 +41,20 @@ app.use("/api/products", storeProductsRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server berjalan di http://localhost:${PORT}`);
-});
+// --- Start server ---
+// Tabel "messages" (Neon/PostgreSQL) dipastikan ada dulu sebelum server
+// mulai menerima request, supaya form kontak tidak gagal di request pertama.
+async function start() {
+  try {
+    await ensureMessagesTable();
+    app.listen(PORT, () => {
+      console.log(`Server berjalan di http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("Gagal konek ke database (Neon). Cek DATABASE_URL di .env.");
+    console.error(err.message);
+    process.exit(1);
+  }
+}
+
+start();

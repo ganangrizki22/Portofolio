@@ -15,7 +15,7 @@ function socialIcon(platform) {
   return socialIcons[platform.toLowerCase()] || "bi-link-45deg";
 }
 
-const initialForm = { name: "", email: "", message: "" };
+const initialForm = { name: "", email: "", phone: "", message: "" };
 
 function Contact() {
   const { data: profile } = useFetch(getProfile, []);
@@ -91,7 +91,7 @@ function Contact() {
         )}
 
         <form className="row g-3 contact-form" onSubmit={handleSubmit}>
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label htmlFor="name" className="form-label">
               <i className="bi bi-person-fill me-1"></i>
               Nama
@@ -107,7 +107,7 @@ function Contact() {
             />
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label htmlFor="email" className="form-label">
               <i className="bi bi-envelope-fill me-1"></i>
               Email
@@ -118,6 +118,22 @@ function Contact() {
               id="email"
               name="email"
               value={form.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-4">
+            <label htmlFor="phone" className="form-label">
+              <i className="bi bi-telephone-fill me-1"></i>
+              Nomor Telepon
+            </label>
+            <input
+              type="tel"
+              className="form-control"
+              id="phone"
+              name="phone"
+              value={form.phone}
               onChange={handleChange}
               required
             />

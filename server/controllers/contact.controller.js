@@ -1,40 +1,39 @@
-const fs = require("fs");
-const path = require("path");
-
-const dataPath = path.join(__dirname, "..", "data", "messages.json");
+const { pool } = require("../config/db");
 
 // POST /api/contact
-// Menerima pesan dari form kontak lalu menyimpannya ke messages.json.
-// Ini murni contoh belajar: di project nyata sebaiknya pesan dikirim
-// lewat email/service pihak ketiga atau disimpan ke database sungguhan.
-function submitContact(req, res, next) {
+// Menerima pesan dari form kontak lalu menyimpannya ke database Neon
+// (PostgreSQL) -- supaya data tidak hilang saat di-deploy ke hosting yang
+// filesystem-nya tidak permanen (lihat catatan lama di bawah).
+//
+// Sebelumnya pesan disimpan ke file server/data/messages.json. Itu cukup
+// untuk belajar di lokal, tapi bermasalah begitu di-deploy: banyak hosting
+// backend murah/gratis (Render free, dsb.) punya "ephemeral filesystem",
+// jadi file yang ditulis saat runtime bisa hilang tiap server restart/deploy
+// ulang. Makanya dipindah ke database sungguhan.
+async function submitContact(req, res, next) {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, phone, message } = req.body;
 
-    if (!name || !email || !message) {
-      const error = new Error("Nama, email, dan pesan wajib diisi");
+    if (!name || !email || !phone || !message) {
+      const error = new Error(
+        "Nama, email, nomor telepon, dan pesan wajib diisi",
+      );
       error.statusCode = 400;
       throw error;
     }
 
-    const raw = fs.readFileSync(dataPath, "utf-8");
-    const messages = JSON.parse(raw);
-
-    const newMessage = {
-      id: Date.now(),
-      name,
-      email,
-      message,
-      createdAt: new Date().toISOString(),
-    };
-
-    messages.push(newMessage);
-    fs.writeFileSync(dataPath, JSON.stringify(messages, null, 2));
+    const result = await pool.query(
+      `INSERT INTO messages (name, email, phone, message)
+       VALUES ($1, $2, $3, $4)
+       RETURNING id, name, email, phone, message, created_at AS "createdAt"`,
+      [name, email, phone, message],
+    );
 
     res.status(201).json({
       success: true,
-      message: "Pesan berhasil dikirim, terima kasih!",
-      data: newMessage,
+      message:
+        "Pesan berhasil dikirim, akan saya respon secepatnya, terima kasih!",
+      data: result.rows[0],
     });
   } catch (err) {
     next(err);
