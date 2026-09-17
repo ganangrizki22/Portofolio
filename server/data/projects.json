@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "title": "Dashboard Admin",
+    "description": "Membuat dashboard admin untuk para member di Indonetwork dengan menggunakan Vue.js, axios API.",
+    "tags": ["Vue.js", "Axios", "REST API"],
+    "image": "",
+    "demoUrl": "",
+    "repoUrl": ""
+  },
+  {
+    "id": 2,
+    "title": "Company Website Indonetwork",
+    "description": "Mengelola UI dari website Indonetwork dengan menggunakan C#, .NET dan API.",
+    "tags": ["C#", ".NET", "API"],
+    "image": "",
+    "demoUrl": "",
+    "repoUrl": ""
+  },
+  {
+    "id": 3,
+    "title": "Tema dari Personal Website Profil",
+    "description": "Membuat dan mengelola tema dari official website untuk para member Indonetwork yang sudah bergabung menjadi premium membership menggunakan C#, .NET dan API.",
+    "tags": ["C#", ".NET", "API"],
+    "image": "",
+    "demoUrl": "",
+    "repoUrl": ""
+  },
+  {
+    "id": 4,
+    "title": "Aplikasi Manajemen Tugas",
+    "description": "Aplikasi to-do list dengan fitur kategori, prioritas, dan filter status, dibangun dengan React dan localStorage.",
+    "tags": ["React", "SCSS", "LocalStorage"],
+    "image": "/assets/project-placeholder-1.png",
+    "demoUrl": "",
+    "repoUrl": "",
+    "internalUrl": "/todo.html"
+  },
+  {
+    "id": 5,
+    "title": "Website Toko Online Sederhana",
+    "description": "Katalog produk dengan keranjang belanja sisi klien, terhubung ke API Node.js untuk data produk.",
+    "tags": ["React", "Bootstrap", "Node.js", "Express"],
+    "image": "/assets/project-placeholder-2.png",
+    "demoUrl": "",
+    "repoUrl": "",
+    "internalUrl": "/toko.html"
+  }
+]

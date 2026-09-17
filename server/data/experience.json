@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "role": "Frontend Developer",
+    "company": "Indonetwork.co.id",
+    "period": "Nov 2019 – Jul 2026",
+    "points": [
+      "Mengelola website perusahaan dari indonetwork.co.id",
+      "Membuat dan mengelola beberapa tema untuk Personal Website para member premium",
+      "Membuat antarmuka dashboard yang responsif dan interaktif untuk member Indonetwork",
+      "Mengembangkan dan memelihara aplikasi web dengan menggunakan component-based",
+      "Integrasi API menggunakan axios untuk menampilkan dan mengelola data secara dinamis",
+      "Optimasi performa aplikasi, troubleshoot dan debugging untuk memastikan aplikasi stabil dan user-friendly"
+    ]
+  }
+]

@@ -1,0 +1,108 @@
+// =========================================
+// NAVBAR (header ramping + menu offcanvas)
+// Struktur mengikuti referensi: tidak ada bar menu horizontal permanen,
+// hanya tombol hamburger yang membuka panel navigasi dari samping.
+// =========================================
+
+.app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  padding: 1rem 0;
+  background-color: rgba($color-dark, 0.85);
+  backdrop-filter: blur(6px);
+
+  .navbar-avatar {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba($color-secondary, 0.6);
+  }
+
+  .navbar-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba($color-light, 0.08);
+    color: $color-light;
+    font-size: 1.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: $color-light;
+      color: $color-dark;
+    }
+  }
+}
+
+// Menu horizontal, hanya tampil di layar >=1200px (d-xl-flex).
+// Di bawah itu, menu disembunyikan dan digantikan tombol hamburger + offcanvas.
+.app-navbar-links {
+  gap: 2rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: rgba($color-light, 0.85);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+
+    i {
+      color: $color-secondary;
+      font-size: 0.95rem;
+    }
+
+    &:hover {
+      color: $color-light;
+    }
+  }
+}
+
+// Panel navigasi yang muncul dari kanan saat tombol hamburger diklik
+.app-offcanvas {
+  background-color: $color-dark;
+  color: $color-light;
+  max-width: 320px;
+  width: 85vw;
+
+  .offcanvas-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .offcanvas-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      padding: 0.9rem 0.25rem;
+      color: rgba($color-light, 0.85);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      border-bottom: 1px solid rgba($color-light, 0.08);
+      transition: color 0.2s ease, padding-left 0.2s ease;
+
+      i {
+        color: $color-secondary;
+      }
+
+      &:hover {
+        color: $color-secondary;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}

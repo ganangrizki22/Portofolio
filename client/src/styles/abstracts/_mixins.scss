@@ -1,0 +1,23 @@
+// =========================================
+// MIXIN KUSTOM
+// =========================================
+
+// Mixin untuk membuat section full-width dengan padding vertikal konsisten
+// Padding lebih kecil di mobile supaya konten tidak terlalu renggang di layar sempit.
+@mixin section-spacing {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    padding-top: $section-padding-y;
+    padding-bottom: $section-padding-y;
+  }
+}
+
+// Mixin flex-center singkat, dipakai berulang di beberapa komponen
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}

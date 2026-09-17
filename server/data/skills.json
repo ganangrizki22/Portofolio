@@ -1,0 +1,14 @@
+[
+  { "id": 1, "category": "Frontend", "name": "React.js", "level": 80 },
+  { "id": 2, "category": "Frontend", "name": "Vue.js 3 (Composition API)", "level": 85 },
+  { "id": 3, "category": "Frontend", "name": "SCSS / Sass", "level": 75 },
+  { "id": 4, "category": "Frontend", "name": "Bootstrap 5", "level": 80 },
+  { "id": 5, "category": "Frontend", "name": "JavaScript (ES6+)", "level": 78 },
+  { "id": 6, "category": "Frontend", "name": "Responsive Design", "level": 82 },
+  { "id": 7, "category": "Backend", "name": "Node.js", "level": 70 },
+  { "id": 8, "category": "Backend", "name": "Express.js", "level": 70 },
+  { "id": 9, "category": "Tools", "name": "Git / GitLab", "level": 80 },
+  { "id": 10, "category": "Tools", "name": "REST API", "level": 82 },
+  { "id": 11, "category": "Tools", "name": "Debugging & Troubleshooting", "level": 78 },
+  { "id": 12, "category": "Soft Skills", "name": "User Experience", "level": 80 }
+]

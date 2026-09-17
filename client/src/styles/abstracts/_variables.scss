@@ -1,0 +1,32 @@
+// =========================================
+// VARIABEL KUSTOM
+// Di-override SEBELUM import Bootstrap di main.scss,
+// supaya Bootstrap ikut memakai palet warna & font kita.
+// =========================================
+
+// Warna utama -- palet monokrom: hitam / abu-abu gelap / putih saja.
+$color-primary: #18181b; // hitam pekat -- tombol, link, ikon di atas latar terang
+$color-secondary: #6b7280; // abu-abu -- aksen di atas latar terang maupun gelap
+$color-dark: #121212; // hitam -- latar section gelap (hero, navbar, footer)
+$color-light: #ffffff; // putih
+$color-muted: #52525b; // abu-abu gelap -- teks sekunder di atas latar terang
+
+// Override variabel Bootstrap (nama variabel ini dikenali Bootstrap)
+$primary: $color-primary;
+$secondary: $color-secondary;
+$dark: $color-dark;
+$light: $color-light;
+
+// Tipografi
+// Karla dipakai sebagai font utama (body & heading), menyesuaikan referensi
+// sharon-yi.com. "Segoe UI" dkk tetap dipertahankan sebagai fallback jika
+// Google Font gagal dimuat.
+$font-family-base: "Karla", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$headings-font-weight: 700;
+
+// Font aksen bergaya tulisan tangan, dipakai terbatas untuk catatan/hint
+// kecil (mengikuti pola di referensi), bukan untuk judul atau body utama.
+$font-family-script: "Nanum Pen Script", cursive;
+
+// Spacing tambahan untuk section
+$section-padding-y: 6rem;

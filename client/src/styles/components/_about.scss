@@ -1,0 +1,107 @@
+// =========================================
+// ABOUT SECTION
+// =========================================
+
+.about-section {
+  .about-avatar {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba($color-dark, 0.15);
+  }
+
+  .about-meta {
+    li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    i {
+      color: var(--text-body);
+      width: 1.1rem;
+    }
+
+    a {
+      color: var(--text-body);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .about-extra {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .education-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .education-logo {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+}
+
+.contact-hint {
+  color: var(--text-muted);
+  font-family: $font-family-script;
+  font-size: 1.35rem;
+}
+
+.contact-info {
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  i {
+    color: var(--text-body);
+    width: 1.1rem;
+  }
+
+  a {
+    color: var(--text-body);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.contact-socials {
+  .contact-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--ink-soft);
+    color: var(--text-body);
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease, color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background-color: var(--text-body);
+      color: var(--surface);
+      transform: translateY(-3px);
+    }
+  }
+}

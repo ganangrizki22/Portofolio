@@ -1,0 +1,217 @@
+// =========================================
+// HALAMAN APLIKASI TO-DO LIST (todo.html)
+// Memakai variabel tema yang sama dengan halaman portofolio utama,
+// jadi ikut berubah saat toggle gelap/terang.
+// =========================================
+
+.todo-page {
+  min-height: 100vh;
+  padding: 3rem 0 4rem;
+  background-color: var(--surface);
+  color: var(--text-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
+
+  .container {
+    max-width: 720px;
+  }
+}
+
+.todo-header {
+  margin-bottom: 2rem;
+
+  .todo-back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-body);
+    }
+  }
+}
+
+.todo-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.todo-subtitle {
+  color: var(--text-muted);
+  max-width: 36rem;
+}
+
+.todo-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+
+  .todo-input {
+    flex: 1 1 220px;
+  }
+
+  .todo-select {
+    flex: 0 1 140px;
+  }
+
+  .todo-add-btn {
+    flex: 0 0 auto;
+  }
+}
+
+.todo-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo-filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-filter-btn {
+  border: 1px solid var(--border-subtle);
+  background-color: transparent;
+  color: var(--text-muted);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    color: var(--text-body);
+  }
+
+  &.active {
+    background-color: var(--text-body);
+    color: var(--surface);
+    border-color: var(--text-body);
+  }
+}
+
+.todo-count {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.todo-empty {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0;
+}
+
+.todo-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.85rem;
+  background-color: var(--surface-alt);
+  transition: background-color 0.2s ease;
+
+  &.completed {
+    .todo-item-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+  }
+}
+
+.todo-item-check {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  min-width: 0;
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--text-body);
+  }
+}
+
+.todo-item-text {
+  overflow-wrap: anywhere;
+}
+
+.todo-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.todo-badge {
+  background-color: var(--ink-soft);
+  color: var(--text-body);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.todo-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--text-muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: var(--ink-soft);
+    color: var(--text-body);
+  }
+}
+
+.todo-footer-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 575.98px) {
+  .todo-form {
+    flex-direction: column;
+
+    .todo-input,
+    .todo-select,
+    .todo-add-btn {
+      flex: 1 1 auto;
+      width: 100%;
+    }
+  }
+
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todo-item-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

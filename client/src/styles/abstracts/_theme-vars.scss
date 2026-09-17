@@ -1,0 +1,61 @@
+// =========================================
+// VARIABEL TEMA GELAP/TERANG
+// Dipakai khusus di section konten (About, Pengalaman, Skill, Proyek,
+// Kontak) yang punya latar terang secara default. Hero/navbar/footer/
+// offcanvas sengaja SELALU gelap, jadi tidak ikut berubah saat toggle --
+// supaya di mode gelap seluruh halaman jadi konsisten gelap, dan di mode
+// terang tampilannya persis seperti sekarang.
+//
+// Tema di-toggle lewat atribut data-bs-theme di <html> (punya komponen
+// ThemeToggle), sekalian dipakai Bootstrap 5.3 untuk retheme komponen
+// bawaannya sendiri (form-control, dsb).
+// =========================================
+
+:root {
+  --surface: #ffffff;
+  --surface-alt: rgba(0, 0, 0, 0.04);
+  --surface-alt-2: rgba(0, 0, 0, 0.07);
+  --text-body: #{$color-primary};
+  --text-muted: #{$color-muted};
+  --ink-faint: rgba(24, 24, 27, 0.16);
+  --ink-soft: rgba(24, 24, 27, 0.1);
+  --border-subtle: rgba(24, 24, 27, 0.08);
+}
+
+[data-bs-theme="dark"] {
+  --surface: #121212;
+  --surface-alt: rgba(255, 255, 255, 0.05);
+  --surface-alt-2: rgba(255, 255, 255, 0.08);
+  --text-body: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --ink-faint: rgba(255, 255, 255, 0.18);
+  --ink-soft: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+
+  // Tombol Bootstrap dipakai di section konten (Proyek, Kontak), jadi
+  // perlu dibalik jadi terang supaya tetap kontras di atas latar gelap.
+  .btn-primary {
+    --bs-btn-color: #121212;
+    --bs-btn-bg: #f4f4f5;
+    --bs-btn-border-color: #f4f4f5;
+    --bs-btn-hover-color: #121212;
+    --bs-btn-hover-bg: #d4d4d8;
+    --bs-btn-hover-border-color: #d4d4d8;
+    --bs-btn-active-color: #121212;
+    --bs-btn-active-bg: #d4d4d8;
+    --bs-btn-active-border-color: #d4d4d8;
+    --bs-btn-disabled-bg: #f4f4f5;
+    --bs-btn-disabled-border-color: #f4f4f5;
+  }
+
+  .btn-outline-secondary {
+    --bs-btn-color: #f4f4f5;
+    --bs-btn-border-color: #71717a;
+    --bs-btn-hover-color: #121212;
+    --bs-btn-hover-bg: #f4f4f5;
+    --bs-btn-hover-border-color: #f4f4f5;
+    --bs-btn-active-color: #121212;
+    --bs-btn-active-bg: #f4f4f5;
+    --bs-btn-active-border-color: #f4f4f5;
+  }
+}

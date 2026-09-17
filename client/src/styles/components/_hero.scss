@@ -1,0 +1,115 @@
+// =========================================
+// HERO SECTION
+// =========================================
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 6.5rem;
+  padding-bottom: 3rem;
+  // background: linear-gradient(135deg, $color-dark 0%, #262626 100%);
+  background-image: url(/public/assets/background-hero.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $color-light;
+
+  @media (max-width: 991.98px) {
+    min-height: auto;
+    padding-top: 6.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-eyebrow {
+    color: $color-secondary;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 800;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 500;
+  }
+
+  .hero-subtitle-highlight {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background-color: rgba($color-secondary, 0.12);
+    font-family: "Nanum Pen Script", cursive;
+  }
+
+  .hero-tagline {
+    max-width: 40rem;
+    color: rgba($color-light, 0.7);
+  }
+
+  // Lingkaran dekoratif di belakang avatar, mengikuti gaya ilustrasi
+  // pada referensi (avatar dibingkai badge warna bulat).
+  .hero-avatar-wrap {
+    position: relative;
+    display: inline-flex;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      z-index: 0;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba($color-secondary, 0.35),
+        rgba($color-light, 0.06)
+      );
+    }
+  }
+
+  .hero-avatar {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba($color-secondary, 0.6);
+    box-shadow: 0 0 0 8px rgba($color-light, 0.05);
+
+    @media (max-width: 575.98px) {
+      max-width: 170px;
+    }
+  }
+
+  // Penanda "gulir ke bawah", hanya tampil di layar besar
+  // supaya tidak menabrak konten saat hero tingginya auto di mobile.
+  .hero-scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    color: rgba($color-light, 0.6);
+    font-size: 1.4rem;
+    animation: heroScrollBounce 1.8s ease-in-out infinite;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+}
+
+@keyframes heroScrollBounce {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}

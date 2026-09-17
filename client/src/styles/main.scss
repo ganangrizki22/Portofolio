@@ -1,0 +1,43 @@
+// =========================================================
+// ENTRY POINT SCSS
+// Struktur folder mengikuti pola 7-1 (versi ringkas) supaya
+// gampang dipelajari: abstracts, base, components, layout.
+//
+// Urutan import PENTING:
+// 1. abstracts   -> variabel & mixin (dipakai untuk override Bootstrap)
+// 2. Bootstrap   -> framework, otomatis pakai variabel kita
+// 3. base        -> reset & tipografi dasar
+// 4. layout      -> navbar, footer, section wrapper
+// 5. components  -> hero, card, tombol, form
+// =========================================================
+
+// 1. Abstracts (variabel & mixin kustom)
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "abstracts/theme-vars";
+
+// 2. Bootstrap (memakai variabel yang sudah kita override di atas)
+@import "bootstrap/scss/bootstrap";
+
+// 3. Base
+@import "base/reset";
+@import "base/typography";
+
+// 4. Layout
+@import "layout/navbar";
+@import "layout/footer";
+@import "layout/sections";
+
+// 5. Components
+@import "components/hero";
+@import "components/about";
+@import "components/experience";
+@import "components/skills";
+@import "components/projects";
+@import "components/cards";
+@import "components/buttons";
+@import "components/forms";
+@import "components/spotify";
+@import "components/theme-toggle";
+@import "components/todo-app";
+@import "components/toko-app";

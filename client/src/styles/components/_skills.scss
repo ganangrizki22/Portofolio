@@ -1,0 +1,40 @@
+// =========================================
+// SKILLS / TOOLKIT SECTION
+// Grid pill icon+label sederhana, mengikuti gaya "My Toolkit" pada
+// referensi -- lebih ringan daripada kartu kategori + progress bar.
+// =========================================
+
+.skills-hint {
+  color: var(--text-muted);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  color: var(--text-body);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+
+  i {
+    color: var(--text-body);
+    font-size: 1.05rem;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  }
+}

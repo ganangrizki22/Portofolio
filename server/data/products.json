@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Headphone Wireless",
+    "category": "Elektronik",
+    "price": 349000,
+    "icon": "bi-headphones",
+    "description": "Headphone bluetooth dengan baterai tahan 20 jam."
+  },
+  {
+    "id": 2,
+    "name": "Smartwatch Fit 2",
+    "category": "Elektronik",
+    "price": 599000,
+    "icon": "bi-smartwatch",
+    "description": "Pelacak aktivitas dengan layar AMOLED dan pemantau detak jantung."
+  },
+  {
+    "id": 3,
+    "name": "Speaker Portable",
+    "category": "Elektronik",
+    "price": 275000,
+    "icon": "bi-speaker",
+    "description": "Speaker bluetooth ringkas dengan suara jernih, tahan cipratan air."
+  },
+  {
+    "id": 4,
+    "name": "Kemeja Katun Pria",
+    "category": "Fashion",
+    "price": 189000,
+    "icon": "bi-person-standing-dress",
+    "description": "Kemeja lengan panjang bahan katun, nyaman untuk sehari-hari."
+  },
+  {
+    "id": 5,
+    "name": "Tas Ransel Kanvas",
+    "category": "Fashion",
+    "price": 225000,
+    "icon": "bi-bag-fill",
+    "description": "Ransel kanvas dengan kompartemen laptop 14 inci."
+  },
+  {
+    "id": 6,
+    "name": "Jam Tangan Klasik",
+    "category": "Aksesoris",
+    "price": 410000,
+    "icon": "bi-watch",
+    "description": "Jam tangan analog tali kulit, desain minimalis."
+  },
+  {
+    "id": 7,
+    "name": "Kacamata Hitam",
+    "category": "Aksesoris",
+    "price": 150000,
+    "icon": "bi-sunglasses",
+    "description": "Kacamata hitam anti-UV dengan bingkai ringan."
+  },
+  {
+    "id": 8,
+    "name": "Lampu Meja LED",
+    "category": "Rumah Tangga",
+    "price": 165000,
+    "icon": "bi-lightbulb-fill",
+    "description": "Lampu belajar LED dengan pengatur kecerahan 3 tingkat."
+  },
+  {
+    "id": 9,
+    "name": "Mug Keramik Set",
+    "category": "Rumah Tangga",
+    "price": 95000,
+    "icon": "bi-cup-hot-fill",
+    "description": "Set 2 mug keramik dengan desain polos elegan."
+  }
+]

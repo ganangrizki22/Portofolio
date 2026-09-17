@@ -1,0 +1,23 @@
+// =========================================
+// RESET / NORMALISASI DASAR
+// Bootstrap sudah bawa reboot, ini hanya penyesuaian tambahan.
+// =========================================
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--text-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

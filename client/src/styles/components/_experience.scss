@@ -1,0 +1,76 @@
+// =========================================
+// EXPERIENCE SECTION
+// =========================================
+
+.experience-timeline {
+  border-left: 3px solid var(--border-subtle);
+  padding-left: 1.5rem;
+
+  @media (max-width: 575.98px) {
+    padding-left: 1rem;
+  }
+}
+
+.experience-item {
+  position: relative;
+  padding-bottom: 2rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.94rem;
+    top: 0.35rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    background-color: var(--text-body);
+    box-shadow: 0 0 0 4px var(--ink-soft);
+
+    @media (max-width: 575.98px) {
+      left: -1.44rem;
+    }
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.experience-item-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.experience-period {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.experience-company {
+  color: var(--text-body);
+  font-weight: 600;
+}
+
+.experience-points {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  color: var(--text-muted);
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+
+    i {
+      color: var(--text-body);
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+// =========================================
+// LAYOUT UMUM SECTION
+// =========================================
+
+.section {
+  @include section-spacing;
+}
+
+.about-section,
+.experience-section,
+.skills-section,
+.projects-section,
+.contact-section {
+  background-color: var(--surface);
+}
