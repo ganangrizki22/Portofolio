@@ -89,23 +89,3 @@ profil, skill, dan proyek dari backend di `http://localhost:5000/api`.
 | GET    | `/api/projects`       | Daftar seluruh proyek                    |
 | GET    | `/api/projects/:id`   | Detail satu proyek                       |
 | POST   | `/api/contact`        | Kirim pesan dari form kontak             |
-
-## Yang Bisa Dipelajari & Dikembangkan Lagi
-
-Karena tujuannya untuk belajar, berikut beberapa langkah lanjutan yang bisa dicoba:
-
-1. **Ganti isi data** di `server/data/*.json` dengan data dirimu sendiri
-   (nama, bio, skill, proyek, foto).
-2. **Sambungkan ke database sungguhan** (MongoDB dengan Mongoose, atau
-   PostgreSQL dengan Prisma) menggantikan file JSON di `server/data/`.
-3. **Tambah halaman baru** dengan React Router (misalnya halaman detail
-   proyek `/projects/:id`).
-4. **Deploy**: frontend bisa di-deploy ke Vercel/Netlify (`npm run build`
-   menghasilkan folder `dist/`), backend bisa di-deploy ke Render/Railway.
-5. **Tambah validasi & keamanan** di endpoint `/api/contact` (rate limiting,
-   sanitasi input) sebagai latihan keamanan dasar backend.
-6. **Ubah warna & font** cukup dengan mengedit
-   `client/src/styles/abstracts/_variables.scss` — karena semua warna
-   Bootstrap sudah di-override dari satu tempat.
-
-Selamat belajar! 🚀
