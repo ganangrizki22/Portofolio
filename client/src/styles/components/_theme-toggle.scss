@@ -23,8 +23,16 @@
   transition: background-color 0.2s ease, color 0.2s ease,
     transform 0.2s ease;
 
+  i {
+    transition: transform 0.35s ease;
+  }
+
   &:hover {
     transform: translateY(-3px);
+
+    i {
+      transform: rotate(18deg);
+    }
   }
 
   &:focus-visible {

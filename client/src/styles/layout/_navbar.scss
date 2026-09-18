@@ -48,6 +48,7 @@
   gap: 2rem;
 
   a {
+    position: relative;
     display: flex;
     align-items: center;
     color: rgba($color-light, 0.85);
@@ -56,13 +57,31 @@
     font-size: 0.95rem;
     transition: color 0.2s ease;
 
+    // Garis bawah animasi, muncul dari tengah saat di-hover/di-focus.
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background-color: $color-secondary;
+      transform: translateX(-50%);
+      transition: width 0.25s ease;
+    }
+
     i {
       color: $color-secondary;
       font-size: 0.95rem;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       color: $color-light;
+
+      &::after {
+        width: 100%;
+      }
     }
   }
 }

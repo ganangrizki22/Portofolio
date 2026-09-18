@@ -1,0 +1,55 @@
+// =========================================
+// HIGHLIGHTS STRIP
+// Baris statistik singkat (tahun pengalaman, jumlah proyek, jumlah
+// teknologi) tepat di bawah Hero -- pola umum di portofolio modern untuk
+// memberi kesan kredibel dalam sekali lihat, dihitung dari data asli
+// (bukan angka mengarang).
+// =========================================
+
+.highlights {
+  background-color: $color-dark;
+  color: $color-light;
+  padding: 2rem 0;
+  border-top: 1px solid rgba($color-light, 0.08);
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+
+  i {
+    font-size: 1.75rem;
+    color: $color-secondary;
+    flex-shrink: 0;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+}
+
+.highlight-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.highlight-label {
+  font-size: 0.85rem;
+  color: rgba($color-light, 0.65);
+}
+
+@media (max-width: 575.98px) {
+  .highlight-item {
+    justify-content: flex-start;
+  }
+}

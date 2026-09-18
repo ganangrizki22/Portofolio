@@ -1,7 +1,8 @@
 // =========================================
-// PROJECTS SECTION (panel besar full-width, bukan grid kartu kecil)
-// Mengikuti referensi: tiap proyek jadi satu blok besar yang berdiri
-// sendiri, bukan kartu kecil berdempetan 3 kolom.
+// PROJECTS SECTION
+// Tiap proyek jadi satu panel besar dua kolom: visual (screenshot asli
+// dibingkai gaya browser, atau placeholder "proyek internal" kalau
+// memang tidak ada demo publik) di satu sisi, detail teks di sisi lain.
 // =========================================
 
 .projects-hint {
@@ -20,18 +21,17 @@
 .projects-stack {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .project-panel {
   position: relative;
   display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 2.5rem;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 2rem;
   border-radius: 1.25rem;
   background-color: var(--surface-alt);
-  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     background-color 0.2s ease;
 
@@ -43,10 +43,56 @@
   &.project-panel-alt {
     background-color: var(--surface-alt-2);
   }
+
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
 }
 
-// Kartu overlay yang muncul menimpa isi panel saat di-hover, dipakai untuk
-// proyek yang punya halaman internal (mis. aplikasi to-do list).
+// --- Kolom visual (screenshot atau placeholder) ---
+.project-panel-visual {
+  flex: 0 0 320px;
+  max-width: 320px;
+
+  @media (max-width: 767.98px) {
+    flex-basis: auto;
+    max-width: none;
+  }
+}
+
+.project-panel-frame {
+  position: relative;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background-color: var(--surface);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.project-panel-frame-bar {
+  display: flex;
+  gap: 6px;
+  padding: 0.55rem 0.7rem;
+  background-color: rgba(0, 0, 0, 0.35);
+
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.35);
+  }
+}
+
+.project-panel-frame img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+}
+
+// Overlay "Pergi Ke ..." yang muncul menimpa screenshot saat di-hover,
+// khusus proyek yang punya halaman internal (mis. aplikasi to-do list).
 .project-panel-overlay {
   position: absolute;
   inset: 0;
@@ -54,18 +100,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.25rem;
   text-align: center;
-  background-color: var(--surface);
+  background-color: rgba(18, 18, 18, 0.88);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(12px);
-  transition: opacity 0.25s ease, transform 0.25s ease,
-    visibility 0.25s ease;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
 }
 
-.project-panel:hover .project-panel-overlay,
-.project-panel:focus-within .project-panel-overlay {
+.project-panel-frame:hover .project-panel-overlay,
+.project-panel-frame:focus-within .project-panel-overlay {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -76,32 +121,67 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+  color: $color-light;
 
   > i {
-    font-size: 2rem;
-    color: var(--text-body);
-    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    margin-bottom: 0.35rem;
   }
 }
 
 .project-panel-overlay-title {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-body);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
-.project-panel-index {
-  flex-shrink: 0;
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--ink-faint);
+// Placeholder untuk proyek yang tidak punya demo publik (mis. proyek
+// internal perusahaan) -- dibuat sengaja terlihat seperti kartu tersendiri
+// (bukan gambar rusak/kosong) supaya tetap terasa profesional.
+.project-panel-confidential {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.85rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: rgba($color-light, 0.85);
+  background-image: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.035) 0px,
+      rgba(255, 255, 255, 0.035) 2px,
+      transparent 2px,
+      transparent 14px
+    ),
+    linear-gradient(160deg, #232326, #17171a);
+
+  i {
+    font-size: 2rem;
+    color: $color-secondary;
+    margin-bottom: 0.25rem;
+  }
 }
 
+.project-panel-confidential-company {
+  font-size: 0.85rem;
+  color: rgba($color-light, 0.55);
+}
+
+// --- Kolom detail teks ---
 .project-panel-body {
   flex: 1;
   min-width: 0;
+}
+
+.project-panel-index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
 }
 
 .project-panel-title {
@@ -115,14 +195,13 @@
   margin-bottom: 1rem;
 }
 
-@media (max-width: 575.98px) {
-  .project-panel {
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 0.5rem;
-  }
-
-  .project-panel-index {
-    font-size: 1.75rem;
-  }
+.project-panel-internal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  background-color: var(--ink-soft);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.85rem;
 }

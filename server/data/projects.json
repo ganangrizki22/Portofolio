@@ -2,36 +2,39 @@
   {
     "id": 1,
     "title": "Dashboard Admin",
-    "description": "Membuat dashboard admin untuk para member di Indonetwork dengan menggunakan Vue.js, axios API.",
+    "description": "Dashboard admin untuk para member Indonetwork, dibangun dengan Vue.js dan terintegrasi ke REST API lewat axios untuk menampilkan dan mengelola data member secara real-time.",
     "tags": ["Vue.js", "Axios", "REST API"],
     "image": "",
     "demoUrl": "",
-    "repoUrl": ""
+    "repoUrl": "",
+    "company": "Indonetwork.co.id"
   },
   {
     "id": 2,
     "title": "Company Website Indonetwork",
-    "description": "Mengelola UI dari website Indonetwork dengan menggunakan C#, .NET dan API.",
+    "description": "Mengelola dan mengembangkan UI website perusahaan Indonetwork.co.id menggunakan C#, .NET dan integrasi API, memastikan tampilan tetap responsif dan konsisten di seluruh halaman.",
     "tags": ["C#", ".NET", "API"],
     "image": "",
     "demoUrl": "",
-    "repoUrl": ""
+    "repoUrl": "",
+    "company": "Indonetwork.co.id"
   },
   {
     "id": 3,
-    "title": "Tema dari Personal Website Profil",
-    "description": "Membuat dan mengelola tema dari official website untuk para member Indonetwork yang sudah bergabung menjadi premium membership menggunakan C#, .NET dan API.",
+    "title": "Tema Personal Website Member",
+    "description": "Merancang dan mengelola tema Personal Website untuk member premium Indonetwork, dibangun dengan C#, .NET dan API sehingga tiap member bisa punya halaman profil sendiri yang bisa dikustomisasi.",
     "tags": ["C#", ".NET", "API"],
     "image": "",
     "demoUrl": "",
-    "repoUrl": ""
+    "repoUrl": "",
+    "company": "Indonetwork.co.id"
   },
   {
     "id": 4,
     "title": "Aplikasi Manajemen Tugas",
-    "description": "Aplikasi to-do list dengan fitur kategori, prioritas, dan filter status, dibangun dengan React dan localStorage.",
+    "description": "Aplikasi to-do list dengan fitur kategori, prioritas, dan filter status, dibangun dengan React dan localStorage sehingga data tugas tetap tersimpan meski halaman ditutup.",
     "tags": ["React", "SCSS", "LocalStorage"],
-    "image": "/assets/project-placeholder-1.png",
+    "image": "/assets/projects/todo-app.jpg",
     "demoUrl": "",
     "repoUrl": "",
     "internalUrl": "/todo.html"
@@ -39,9 +42,9 @@
   {
     "id": 5,
     "title": "Website Toko Online Sederhana",
-    "description": "Katalog produk dengan keranjang belanja sisi klien, terhubung ke API Node.js untuk data produk.",
+    "description": "Katalog produk dengan keranjang belanja sisi klien, terhubung ke API Node.js/Express untuk data produk secara dinamis.",
     "tags": ["React", "Bootstrap", "Node.js", "Express"],
-    "image": "/assets/project-placeholder-2.png",
+    "image": "/assets/projects/toko-app.jpg",
     "demoUrl": "",
     "repoUrl": "",
     "internalUrl": "/toko.html"

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
+import useReveal from "../../hooks/useReveal.js";
 import { getProfile, sendContactMessage } from "../../services/api.js";
 
 const socialIcons = {
@@ -21,6 +22,7 @@ function Contact() {
   const { data: profile } = useFetch(getProfile, []);
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState({ state: "idle", message: "" });
+  const revealRef = useReveal();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -44,7 +46,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="section contact-section">
+    <section id="contact" className="section contact-section reveal" ref={revealRef}>
       <div className="container">
         <h2 className="section-title mb-2">Kontak</h2>
         <p className="contact-hint mb-4">
@@ -72,12 +74,13 @@ function Contact() {
 
         {profile && (
           <ul className="list-unstyled contact-info mb-4">
-            {(profile.emails || [profile.email]).filter(Boolean).map((email) => (
-              <li key={email}>
+            {profile.email && (
+              <li>
                 <i className="bi bi-envelope-fill"></i>
-                <strong>Email:</strong> <a href={`mailto:${email}`}>{email}</a>
+                <strong>Email:</strong>{" "}
+                <a href={`mailto:${profile.email}`}>{profile.email}</a>
               </li>
-            ))}
+            )}
             {profile.phone && (
               <li>
                 <i className="bi bi-telephone-fill"></i>

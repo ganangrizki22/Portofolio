@@ -1,0 +1,28 @@
+// =========================================
+// SCROLL REVEAL
+// Class utilitas "reveal" dipasang di section/kartu yang ingin muncul
+// dengan animasi fade + slide-up saat pertama kali terlihat di viewport
+// (lihat hooks/useReveal.js). Transition-delay per elemen diatur lewat
+// custom property --reveal-delay supaya bisa dibuat efek staggered
+// (proyek/skill muncul satu-satu, bukan bersamaan).
+// =========================================
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

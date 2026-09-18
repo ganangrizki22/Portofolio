@@ -30,6 +30,16 @@ function Hero() {
                     <i className="bi bi-envelope me-2"></i>
                     Hubungi Saya
                   </a>
+                  {profile?.resumeUrl && (
+                    <a
+                      href={profile.resumeUrl}
+                      className="btn btn-outline-light btn-lg"
+                      download={`Resume ${profile.name}.pdf`}
+                    >
+                      <i className="bi bi-download me-2"></i>
+                      Unduh CV
+                    </a>
+                  )}
                 </div>
               </>
             )}

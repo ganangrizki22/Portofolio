@@ -30,6 +30,7 @@
 
 // 5. Components
 @import "components/hero";
+@import "components/highlights";
 @import "components/about";
 @import "components/experience";
 @import "components/skills";
@@ -41,3 +42,6 @@
 @import "components/theme-toggle";
 @import "components/todo-app";
 @import "components/toko-app";
+
+// 6. Utility (dipakai lintas komponen)
+@import "components/reveal";

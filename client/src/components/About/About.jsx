@@ -1,11 +1,17 @@
 import useFetch from "../../hooks/useFetch.js";
+import useReveal from "../../hooks/useReveal.js";
 import { getProfile } from "../../services/api.js";
 
 function About() {
   const { data: profile, loading, error } = useFetch(getProfile, []);
+  const revealRef = useReveal();
 
   return (
-    <section id="about" className="section about-section">
+    <section
+      id="about"
+      className="section about-section reveal"
+      ref={revealRef}
+    >
       <div className="container">
         <h2 className="section-title mb-4">Tentang Saya</h2>
 
@@ -35,15 +41,13 @@ function About() {
                   <i className="bi bi-geo-alt-fill"></i>
                   <strong>Lokasi:</strong> {profile.location}
                 </li>
-                {(profile.emails || [profile.email])
-                  .filter(Boolean)
-                  .map((email) => (
-                    <li key={email}>
-                      <i className="bi bi-envelope-fill"></i>
-                      <strong>Email:</strong>{" "}
-                      <a href={`mailto:${email}`}>{email}</a>
-                    </li>
-                  ))}
+                {profile.email && (
+                  <li>
+                    <i className="bi bi-envelope-fill"></i>
+                    <strong>Email:</strong>{" "}
+                    <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                  </li>
+                )}
                 {profile.phone && (
                   <li>
                     <i className="bi bi-telephone-fill"></i>

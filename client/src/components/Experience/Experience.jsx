@@ -1,11 +1,13 @@
 import useFetch from "../../hooks/useFetch.js";
+import useReveal from "../../hooks/useReveal.js";
 import { getExperience } from "../../services/api.js";
 
 function Experience() {
   const { data: experience, loading, error } = useFetch(getExperience, []);
+  const revealRef = useReveal();
 
   return (
-    <section id="experience" className="section experience-section">
+    <section id="experience" className="section experience-section reveal" ref={revealRef}>
       <div className="container">
         <h2 className="section-title mb-4">Pengalaman</h2>
 

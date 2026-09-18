@@ -1,4 +1,5 @@
 import useFetch from "../../hooks/useFetch.js";
+import useReveal from "../../hooks/useReveal.js";
 import { getSkills } from "../../services/api.js";
 
 const categoryIcons = {
@@ -12,11 +13,32 @@ function categoryIcon(category) {
   return categoryIcons[category] || "bi-star-fill";
 }
 
-function Skills() {
-  const { data: skills, loading, error } = useFetch(getSkills, []);
+// Dipisah jadi komponen sendiri (bukan langsung di dalam .map di Skills)
+// supaya tiap pill bisa punya IntersectionObserver-nya masing-masing lewat
+// useReveal -- kalau dipanggil langsung di dalam callback .map, jumlah
+// pemanggilan hook akan berubah-ubah (0 saat loading, N setelah data
+// datang) dan melanggar Rules of Hooks React.
+function SkillPill({ skill, index }) {
+  const revealRef = useReveal();
 
   return (
-    <section id="skills" className="section skills-section">
+    <div
+      className="skill-pill reveal"
+      ref={revealRef}
+      style={{ "--reveal-delay": `${Math.min(index * 45, 400)}ms` }}
+    >
+      <i className={`bi ${categoryIcon(skill.category)}`}></i>
+      <span>{skill.name}</span>
+    </div>
+  );
+}
+
+function Skills() {
+  const { data: skills, loading, error } = useFetch(getSkills, []);
+  const revealRef = useReveal();
+
+  return (
+    <section id="skills" className="section skills-section reveal" ref={revealRef}>
       <div className="container">
         <h2 className="section-title mb-2">Toolkit Saya</h2>
         <p className="skills-hint mb-4">
@@ -28,11 +50,8 @@ function Skills() {
         {error && <p className="text-danger">Gagal memuat data skill.</p>}
 
         <div className="skills-grid">
-          {skills?.map((skill) => (
-            <div className="skill-pill" key={skill.id}>
-              <i className={`bi ${categoryIcon(skill.category)}`}></i>
-              <span>{skill.name}</span>
-            </div>
+          {skills?.map((skill, index) => (
+            <SkillPill skill={skill} index={index} key={skill.id} />
           ))}
         </div>
       </div>
