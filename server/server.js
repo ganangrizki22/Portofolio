@@ -7,6 +7,7 @@ const { errorHandler, notFoundHandler } = require("./middleware/errorHandler");
 const profileRoutes = require("./routes/profile.routes");
 const skillsRoutes = require("./routes/skills.routes");
 const experienceRoutes = require("./routes/experience.routes");
+const testimonialsRoutes = require("./routes/testimonials.routes");
 const projectsRoutes = require("./routes/projects.routes");
 const contactRoutes = require("./routes/contact.routes");
 const spotifyRoutes = require("./routes/spotify.routes");
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use("/api/profile", profileRoutes);
 app.use("/api/skills", skillsRoutes);
 app.use("/api/experience", experienceRoutes);
+app.use("/api/testimonials", testimonialsRoutes);
 app.use("/api/projects", projectsRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/spotify", spotifyRoutes);

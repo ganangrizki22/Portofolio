@@ -4,6 +4,7 @@ import Hero from "./components/Hero/Hero.jsx";
 import Highlights from "./components/Highlights/Highlights.jsx";
 import About from "./components/About/About.jsx";
 import Experience from "./components/Experience/Experience.jsx";
+import Testimonials from "./components/Testimonials/Testimonials.jsx";
 import Skills from "./components/Skills/Skills.jsx";
 import Projects from "./components/Projects/Projects.jsx";
 import Contact from "./components/Contact/Contact.jsx";
@@ -21,6 +22,7 @@ function App() {
         <Highlights />
         <About />
         <Experience />
+        <Testimonials />
         <Skills />
         <Projects />
         <Contact />

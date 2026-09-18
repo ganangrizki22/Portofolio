@@ -5,6 +5,7 @@ import { getProfile } from "../../services/api.js";
 const navLinks = [
   { href: "#about", label: "Tentang", icon: "bi-person-fill" },
   { href: "#experience", label: "Pengalaman", icon: "bi-briefcase-fill" },
+  { href: "#testimonials", label: "Testimoni", icon: "bi-chat-quote-fill" },
   { href: "#skills", label: "Skill", icon: "bi-tools" },
   { href: "#projects", label: "Proyek", icon: "bi-kanban-fill" },
   { href: "#contact", label: "Kontak", icon: "bi-envelope-fill" },

@@ -1,0 +1,86 @@
+// =========================================
+// TESTIMONIALS SECTION
+// =========================================
+
+.testimonials-hint {
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+.testimonial-card {
+  position: relative;
+  height: 100%;
+  padding: 2rem 1.75rem 1.75rem;
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-quote-icon {
+  font-size: 2rem;
+  color: var(--ink-faint);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-body {
+  flex: 1;
+  color: var(--text-body);
+  font-size: 0.95rem;
+  line-height: 1.65;
+
+  p {
+    margin-bottom: 0.85rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.testimonial-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.testimonial-name {
+  font-weight: 700;
+  color: var(--text-body);
+}
+
+.testimonial-title {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.testimonial-relation {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+
+  i {
+    color: var(--text-body);
+  }
+}
+
+.testimonial-meta {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.testimonial-source {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+
+  i {
+    color: #0a66c2; // warna resmi ikon LinkedIn, dipertahankan di kedua tema
+  }
+}

@@ -16,6 +16,9 @@ export const getSkills = () => api.get("/skills").then((res) => res.data.data);
 export const getExperience = () =>
   api.get("/experience").then((res) => res.data.data);
 
+export const getTestimonials = () =>
+  api.get("/testimonials").then((res) => res.data.data);
+
 export const getProjects = () => api.get("/projects").then((res) => res.data.data);
 
 export const sendContactMessage = (payload) =>
