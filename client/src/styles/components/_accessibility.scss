@@ -1,0 +1,25 @@
+// =========================================
+// AKSESIBILITAS
+// =========================================
+
+// Link "lompat ke konten utama" -- tersembunyi secara visual, tapi tetap
+// bisa dijangkau lewat keyboard (Tab) dan baru muncul saat mendapat fokus.
+// Berguna untuk pengguna keyboard/pembaca layar supaya tidak harus
+// menavigasi seluruh link di navbar setiap kali pindah halaman.
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 2000;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--text-body);
+  color: var(--surface);
+  font-weight: 700;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 0;
+    color: var(--surface);
+  }
+}

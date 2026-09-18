@@ -1,6 +1,7 @@
 import useFetch from "../../hooks/useFetch.js";
 import useReveal from "../../hooks/useReveal.js";
 import { getExperience } from "../../services/api.js";
+import Skeleton from "../Skeleton/Skeleton.jsx";
 
 function Experience() {
   const { data: experience, loading, error } = useFetch(getExperience, []);
@@ -11,7 +12,15 @@ function Experience() {
       <div className="container">
         <h2 className="section-title mb-4">Pengalaman</h2>
 
-        {loading && <p>Memuat...</p>}
+        {loading && (
+          <div aria-busy="true" aria-label="Memuat data pengalaman">
+            <Skeleton className="skeleton-text" style={{ maxWidth: 220, height: "1.3rem" }} />
+            <Skeleton className="skeleton-text" style={{ maxWidth: 160 }} />
+            <Skeleton className="skeleton-text mt-3" />
+            <Skeleton className="skeleton-text" />
+            <Skeleton className="skeleton-text" style={{ maxWidth: "60%" }} />
+          </div>
+        )}
         {error && (
           <p className="text-danger">Gagal memuat data pengalaman.</p>
         )}

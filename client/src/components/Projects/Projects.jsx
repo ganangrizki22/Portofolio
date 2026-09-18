@@ -1,6 +1,7 @@
 import useFetch from "../../hooks/useFetch.js";
 import useReveal from "../../hooks/useReveal.js";
 import { getProjects } from "../../services/api.js";
+import Skeleton from "../Skeleton/Skeleton.jsx";
 
 // Dipisah jadi komponen sendiri (bukan langsung di dalam .map di Projects)
 // supaya tiap panel bisa punya IntersectionObserver-nya masing-masing lewat
@@ -116,7 +117,12 @@ function Projects() {
           Beberapa proyek yang pernah saya kerjakan.
         </p>
 
-        {loading && <p>Memuat...</p>}
+        {loading && (
+          <div aria-busy="true" aria-label="Memuat data proyek">
+            <Skeleton className="skeleton-card" />
+            <Skeleton className="skeleton-card" />
+          </div>
+        )}
         {error && <p className="text-danger">Gagal memuat data proyek.</p>}
 
         <div className="projects-stack">

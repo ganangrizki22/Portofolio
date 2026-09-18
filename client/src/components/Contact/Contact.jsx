@@ -2,6 +2,7 @@ import { useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
 import useReveal from "../../hooks/useReveal.js";
 import { getProfile, sendContactMessage } from "../../services/api.js";
+import Skeleton from "../Skeleton/Skeleton.jsx";
 
 const socialIcons = {
   github: "bi-github",
@@ -19,7 +20,7 @@ function socialIcon(platform) {
 const initialForm = { name: "", email: "", phone: "", message: "" };
 
 function Contact() {
-  const { data: profile } = useFetch(getProfile, []);
+  const { data: profile, loading: profileLoading } = useFetch(getProfile, []);
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState({ state: "idle", message: "" });
   const revealRef = useReveal();
@@ -53,6 +54,22 @@ function Contact() {
           Kalau ada proyek, kolaborasi, atau sekadar mau ngobrol, jangan ragu
           untuk menghubungi saya.
         </p>
+
+        {profileLoading && (
+          <div aria-busy="true" aria-label="Memuat data kontak">
+            <div className="d-flex flex-wrap gap-3 mb-4">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton
+                  key={i}
+                  className="skeleton-circle"
+                  style={{ width: 44, height: 44 }}
+                />
+              ))}
+            </div>
+            <Skeleton className="skeleton-text" style={{ maxWidth: 260 }} />
+            <Skeleton className="skeleton-text mb-4" style={{ maxWidth: 200 }} />
+          </div>
+        )}
 
         {profile?.socials && (
           <div className="d-flex flex-wrap gap-3 mb-4 contact-socials">

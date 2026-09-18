@@ -1,0 +1,27 @@
+// =========================================
+// SCROLL PROGRESS BAR
+// Bar tipis statis di paling atas viewport, di atas navbar.
+// =========================================
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 1050;
+  background: transparent;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background-color: var(--text-body);
+  transition: width 0.1s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar {
+    transition: none;
+  }
+}

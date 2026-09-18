@@ -1,6 +1,7 @@
 import useFetch from "../../hooks/useFetch.js";
 import useReveal from "../../hooks/useReveal.js";
 import { getSkills } from "../../services/api.js";
+import Skeleton from "../Skeleton/Skeleton.jsx";
 
 const categoryIcons = {
   Frontend: "bi-code-slash",
@@ -46,7 +47,13 @@ function Skills() {
           sehari-hari.
         </p>
 
-        {loading && <p>Memuat...</p>}
+        {loading && (
+          <div aria-busy="true" aria-label="Memuat data skill">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <Skeleton key={i} className="skeleton-pill" />
+            ))}
+          </div>
+        )}
         {error && <p className="text-danger">Gagal memuat data skill.</p>}
 
         <div className="skills-grid">

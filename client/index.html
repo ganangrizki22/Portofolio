@@ -41,22 +41,36 @@
     />
     <meta name="twitter:image" content="/assets/og-banner.jpg" />
 
-    <!-- Bootstrap Icons (dipakai di seluruh komponen untuk ikon kontak, skill, dll.) -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
+    <!-- Ikon (bootstrap-icons) dan font (Karla, Nanum Pen Script) di-bundle
+         secara lokal lewat main.jsx (paket npm), bukan lewat CDN jsDelivr /
+         Google Fonts lagi -- supaya situs tetap tampil benar meski koneksi
+         ke CDN lambat/diblokir, tidak ada flash-of-unstyled-text, dan tidak
+         ada request pihak ketiga ke browser pengunjung. -->
 
-    <!-- Font, menyesuaikan referensi sharon-yi.com: Karla untuk teks utama,
-         Nanum Pen Script untuk aksen tulisan-tangan kecil. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Nanum+Pen+Script&display=swap"
-    />
+    <!-- Data terstruktur (JSON-LD) supaya mesin pencari bisa menampilkan
+         hasil yang lebih kaya (nama, profesi, tautan sosial) untuk halaman
+         ini. Perbarui manual di sini jika nama/jabatan/tautan sosial di
+         profile.json berubah. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ganang Rizki Haryadi",
+        "jobTitle": "Frontend Developer",
+        "description": "Frontend Developer berpengalaman membangun antarmuka web modern dan responsif dengan React, Vue.js, dan Node.js.",
+        "image": "/assets/avatar.jpg",
+        "email": "mailto:radenmasganang22@gmail.com",
+        "sameAs": [
+          "https://github.com/ganangrizki22",
+          "https://www.linkedin.com/in/ganang-rizki-haryadi-37ba40238/",
+          "https://instagram.com/delita.hy",
+          "https://www.facebook.com/ganangrizki.haryadi/"
+        ]
+      }
+    </script>
   </head>
   <body>
+    <a href="#hero" class="skip-link">Langsung ke konten utama</a>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

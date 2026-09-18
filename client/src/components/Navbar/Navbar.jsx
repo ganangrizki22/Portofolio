@@ -1,4 +1,5 @@
 import useFetch from "../../hooks/useFetch.js";
+import useActiveSection from "../../hooks/useActiveSection.js";
 import { getProfile } from "../../services/api.js";
 
 const navLinks = [
@@ -9,8 +10,11 @@ const navLinks = [
   { href: "#contact", label: "Kontak", icon: "bi-envelope-fill" },
 ];
 
+const sectionIds = navLinks.map((link) => link.href.slice(1));
+
 function Navbar() {
   const { data: profile } = useFetch(getProfile, []);
+  const activeId = useActiveSection(sectionIds);
 
   return (
     <>
@@ -29,14 +33,21 @@ function Navbar() {
           </a>
 
           <ul className="app-navbar-links d-none d-xl-flex align-items-center list-unstyled mb-0">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>
-                  <i className={`bi ${link.icon} me-2`}></i>
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeId === link.href.slice(1);
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={isActive ? "active" : undefined}
+                    aria-current={isActive ? "true" : undefined}
+                  >
+                    <i className={`bi ${link.icon} me-2`}></i>
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <button
@@ -71,14 +82,22 @@ function Navbar() {
         </div>
         <div className="offcanvas-body">
           <ul className="offcanvas-nav list-unstyled">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} data-bs-dismiss="offcanvas">
-                  <i className={`bi ${link.icon} me-2`}></i>
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeId === link.href.slice(1);
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    data-bs-dismiss="offcanvas"
+                    className={isActive ? "active" : undefined}
+                    aria-current={isActive ? "true" : undefined}
+                  >
+                    <i className={`bi ${link.icon} me-2`}></i>
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

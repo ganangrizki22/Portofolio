@@ -1,0 +1,42 @@
+// =========================================
+// TOMBOL "KEMBALI KE ATAS"
+// Statis di kanan bawah layar, ditumpuk tepat di atas theme-toggle.
+// =========================================
+
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 5.25rem;
+  z-index: 1039;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  background-color: var(--surface);
+  color: var(--text-body);
+  font-size: 1.2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--text-body);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 575.98px) {
+    right: 1rem;
+    bottom: 4.5rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.05rem;
+  }
+}

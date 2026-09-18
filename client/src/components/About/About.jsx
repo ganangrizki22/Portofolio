@@ -1,21 +1,31 @@
 import useFetch from "../../hooks/useFetch.js";
 import useReveal from "../../hooks/useReveal.js";
 import { getProfile } from "../../services/api.js";
+import Skeleton from "../Skeleton/Skeleton.jsx";
 
 function About() {
   const { data: profile, loading, error } = useFetch(getProfile, []);
   const revealRef = useReveal();
 
   return (
-    <section
-      id="about"
-      className="section about-section reveal"
-      ref={revealRef}
-    >
+    <section id="about" className="section about-section reveal" ref={revealRef}>
       <div className="container">
         <h2 className="section-title mb-4">Tentang Saya</h2>
 
-        {loading && <p>Memuat...</p>}
+        {loading && (
+          <div className="row align-items-center g-4 my-3" aria-busy="true" aria-label="Memuat data profil">
+            <div className="col-lg-4 d-flex justify-content-center">
+              <Skeleton className="about-avatar" />
+            </div>
+            <div className="col-lg-8">
+              <Skeleton className="skeleton-text" />
+              <Skeleton className="skeleton-text" />
+              <Skeleton className="skeleton-text" style={{ maxWidth: "70%" }} />
+              <Skeleton className="skeleton-text mt-3" style={{ maxWidth: 220 }} />
+              <Skeleton className="skeleton-text" style={{ maxWidth: 260 }} />
+            </div>
+          </div>
+        )}
         {error && (
           <p className="text-danger">
             Gagal memuat data profil. Pastikan backend (server Node.js) sudah

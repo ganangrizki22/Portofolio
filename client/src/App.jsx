@@ -8,10 +8,13 @@ import Skills from "./components/Skills/Skills.jsx";
 import Projects from "./components/Projects/Projects.jsx";
 import Contact from "./components/Contact/Contact.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import ScrollProgress from "./components/ScrollProgress/ScrollProgress.jsx";
+import BackToTop from "./components/BackToTop/BackToTop.jsx";
 
 function App() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
@@ -24,6 +27,7 @@ function App() {
       </main>
       <Footer />
       <ThemeToggle />
+      <BackToTop />
     </>
   );
 }
