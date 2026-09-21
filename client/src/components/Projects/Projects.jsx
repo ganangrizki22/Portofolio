@@ -11,7 +11,7 @@ function ProjectPanel({ project, index }) {
   const revealRef = useReveal();
   const hasLinks = project.demoUrl || project.repoUrl;
   // internalUrl biasanya halaman demo di situs sendiri (mis. /todo.html),
-  // tapi bisa juga link keluar (mis. https://ovelia.id) -- kalau bentuknya
+  // tapi bisa juga link keluar (mis. https://ovelia.my.id) -- kalau bentuknya
   // URL lengkap, buka di tab baru supaya pengunjung tidak "kelempar" keluar
   // dari portofolio tanpa sadar.
   const isExternalInternalUrl = /^https?:\/\//.test(project.internalUrl || "");
