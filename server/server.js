@@ -29,6 +29,31 @@ const allowedOrigins = (process.env.CLIENT_ORIGIN || DEFAULT_DEV_ORIGINS)
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+// --- Kesiapan tabel Neon ---
+// Di server tradisional cukup di-await sekali di fase startup sebelum
+// app.listen(). Tapi di serverless (Vercel) tidak ada fase startup yang jelas
+// -- tiap request bisa jadi "cold start" baru begitu instance function-nya
+// baru dinyalakan. Jadi promise-nya dibuat sekali di scope module (supaya
+// query CREATE TABLE-nya tidak diulang tiap request -- cold start berikutnya
+// pakai instance yang sama akan langsung dapat promise yang sudah resolved),
+// lalu di-await lewat middleware kecil di bawah sebelum request apa pun
+// diproses -- ini juga otomatis bikin request pertama nunggu tabelnya siap,
+// baik di mode server biasa maupun serverless.
+const dbReady = ensureMessagesTable().catch((err) => {
+  console.error("Gagal menyiapkan tabel database (Neon). Cek DATABASE_URL.");
+  console.error(err.message);
+  throw err;
+});
+
+app.use(async (req, res, next) => {
+  try {
+    await dbReady;
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
 // --- Global middleware ---
 app.use(
   cors({
@@ -67,19 +92,18 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 // --- Start server ---
-// Tabel "messages" (Neon/PostgreSQL) dipastikan ada dulu sebelum server
-// mulai menerima request, supaya form kontak tidak gagal di request pertama.
-async function start() {
-  try {
-    await ensureMessagesTable();
-    app.listen(PORT, () => {
-      console.log(`Server berjalan di http://localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error("Gagal konek ke database (Neon). Cek DATABASE_URL di .env.");
-    console.error(err.message);
-    process.exit(1);
-  }
+// app.listen() cuma dipanggil kalau file ini dieksekusi LANGSUNG (`node
+// server.js` / `npm run dev`, dipakai untuk dev lokal atau hosting server
+// tradisional) -- dideteksi lewat require.main === module, idiom standar
+// Node.js untuk itu. Di Vercel, file ini di-import lewat api/index.js sebagai
+// handler serverless (lihat file itu), jadi baris require.main === module
+// bernilai false di sana dan app.listen() dilewati -- Vercel yang urus
+// port/servernya sendiri, kita cukup export `app`-nya lewat module.exports
+// di bawah.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server berjalan di http://localhost:${PORT}`);
+  });
 }
 
-start();
+module.exports = app;
