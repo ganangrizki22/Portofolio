@@ -51,8 +51,44 @@
 }
 
 .experience-company {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--text-body);
   font-weight: 600;
+}
+
+// Logo perusahaan (mis. Indonetwork.co.id) didesain untuk latar terang --
+// dikasih "plakat" putih kecil di belakangnya (pola yang sama dipakai di
+// proyek toko online) supaya tetap kontras & terbaca meski section ini
+// berpindah ke latar gelap lewat ThemeToggle (lihat _theme-vars.scss).
+.experience-company-logo-plate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.experience-company-logo {
+  display: block;
+  height: 1.1rem;
+  width: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 575.98px) {
+  .experience-company-logo-plate {
+    padding: 0.25rem 0.45rem;
+  }
+
+  .experience-company-logo {
+    height: 0.9rem;
+  }
 }
 
 .experience-points {

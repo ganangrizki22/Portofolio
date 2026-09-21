@@ -15,10 +15,33 @@ const storeProductsRoutes = require("./routes/products.routes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
+
+// Boleh diisi beberapa origin sekaligus, dipisah koma (CLIENT_ORIGIN=a,b,c) --
+// berguna karena Vite otomatis pindah ke port berikutnya (5174, 5175, dst.)
+// kalau port 5173 sudah dipakai project lain yang dibuka bersamaan (mis.
+// project TokoOnline). Tanpa ini, browser akan menolak response API dengan
+// error CORS begitu client kebetulan tidak jalan persis di 5173. Kalau
+// CLIENT_ORIGIN tidak diisi di .env, tiga port dev yang paling umum dipakai
+// Vite berturut-turut sudah diizinkan by default.
+const DEFAULT_DEV_ORIGINS = "http://localhost:5173,http://localhost:5174,http://localhost:5175";
+const allowedOrigins = (process.env.CLIENT_ORIGIN || DEFAULT_DEV_ORIGINS)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 // --- Global middleware ---
-app.use(cors({ origin: CLIENT_ORIGIN }));
+app.use(
+  cors({
+    origin(origin, callback) {
+      // origin kosong = request bukan dari browser (curl, Postman, dsb) -- izinkan.
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      console.warn(`CORS menolak origin "${origin}". Origin yang diizinkan: ${allowedOrigins.join(", ")}`);
+      return callback(new Error("Origin tidak diizinkan oleh CORS."));
+    },
+  })
+);
 app.use(express.json());
 
 // --- Health check ---

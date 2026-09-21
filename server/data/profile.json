@@ -2,7 +2,7 @@
   "name": "Ganang Rizki Haryadi",
   "title": "Frontend Developer",
   "tagline": "Membangun antarmuka yang rapi dan API yang solid.",
-  "about": "Frontend Developer dengan pengalaman mengembangkan dashboard, website perusahaan dan aplikasi web modern menggunakan Vue 3. Terbiasa mengerjakan UI responsif, integrasi REST API, state management dan visualisasi data. Memiliki rasa ingin tahu tinggi dan senang mempelajari teknologi maupun wawasan baru. Nyaman bekerja fokus secara mandiri, namun tetap mampu bekerja dalam tim.",
+  "about": "Frontend Developer dengan pengalaman lebih dari 6 tahun merancang dan membangun antarmuka web yang responsif, dengan Vue.js sebagai fondasi utama dalam bekerja. Tidak terbatas pada satu stack, saya juga mampu pada React.js, C#, serta Node.js/Express.js dan Neon PostgreSQL untuk kebutuhan backend. Berpengalaman menangani berbagai jenis website, mulai dari website marketplace, dashboard admin, hingga personal website, dengan perhatian khusus pada kerapian UI, performa, dan kenyamanan pengguna.",
   "location": "Jakarta Timur, DKI Jakarta",
   "email": "radenmasganang22@gmail.com",
   "phone": "0813-1964-9074",
@@ -24,7 +24,7 @@
   ],
   "languages": [
     { "name": "Bahasa Indonesia", "level": "Fasih" },
-    { "name": "Bahasa Inggris", "level": "Fasih" }
+    { "name": "Bahasa Inggris", "level": "Cukup Fasih" }
   ],
   "resumeUrl": "/assets/resume.pdf"
 }

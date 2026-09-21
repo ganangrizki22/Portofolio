@@ -39,7 +39,20 @@ function Experience() {
                 </span>
               </div>
               <p className="experience-company mb-2">
-                <i className="bi bi-building me-1"></i>
+                {item.companyLogo ? (
+                  <span className="experience-company-logo-plate">
+                    <img
+                      src={item.companyLogo}
+                      alt={item.company}
+                      className="experience-company-logo"
+                      width="360"
+                      height="75"
+                      loading="lazy"
+                    />
+                  </span>
+                ) : (
+                  <i className="bi bi-building me-1"></i>
+                )}
                 {item.company}
               </p>
               <ul className="experience-points">

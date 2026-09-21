@@ -30,6 +30,17 @@
     "company": "Indonetwork.co.id"
   },
   {
+    "id": 6,
+    "title": "Toko Online Ovelia — Busana Muslim",
+    "description": "Platform e-commerce full-stack untuk busana muslim & perlengkapan ibadah: autentikasi akun dengan verifikasi email, wishlist dan keranjang belanja tersimpan per akun, checkout terintegrasi Midtrans (Virtual Account & QRIS), serta ongkos kirim real-time lewat RajaOngkir.",
+    "tags": ["React", "Node.js", "Express", "PostgreSQL"],
+    "secondtags": ["Midtrans", "Rajaongkir", "SMTP"],
+    "image": "/assets/projects/ovelia-app.jpg",
+    "demoUrl": "",
+    "repoUrl": "",
+    "internalUrl": "https://ovelia.id"
+  },
+  {
     "id": 4,
     "title": "Aplikasi Manajemen Tugas",
     "description": "Aplikasi to-do list dengan fitur kategori, prioritas, dan filter status, dibangun dengan React dan localStorage sehingga data tugas tetap tersimpan meski halaman ditutup.",

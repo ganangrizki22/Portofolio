@@ -11,7 +11,6 @@ function Footer() {
       <div className="container text-center py-4 d-flex flex-column align-items-center">
         <Spotify />
         <p className="mb-0 small">
-          Dibuat dengan <i className="bi bi-heart-fill mx-1"></i>
           oleh {profile?.name || "Portofolio Pribadi"} &copy; {year}
         </p>
       </div>

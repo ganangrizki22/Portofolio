@@ -10,6 +10,11 @@ import Skeleton from "../Skeleton/Skeleton.jsx";
 function ProjectPanel({ project, index }) {
   const revealRef = useReveal();
   const hasLinks = project.demoUrl || project.repoUrl;
+  // internalUrl biasanya halaman demo di situs sendiri (mis. /todo.html),
+  // tapi bisa juga link keluar (mis. https://ovelia.id) -- kalau bentuknya
+  // URL lengkap, buka di tab baru supaya pengunjung tidak "kelempar" keluar
+  // dari portofolio tanpa sadar.
+  const isExternalInternalUrl = /^https?:\/\//.test(project.internalUrl || "");
 
   return (
     <article
@@ -27,14 +32,24 @@ function ProjectPanel({ project, index }) {
               <span></span>
               <span></span>
             </div>
-            <img src={project.image} alt={`Tampilan ${project.title}`} loading="lazy" />
+            <img
+              src={project.image}
+              alt={`Tampilan ${project.title}`}
+              loading="lazy"
+            />
 
             {project.internalUrl && (
               <div className="project-panel-overlay">
                 <div className="project-panel-overlay-inner">
                   <i className="bi bi-box-arrow-up-right"></i>
                   <p className="project-panel-overlay-title">{project.title}</p>
-                  <a href={project.internalUrl} className="btn btn-primary">
+                  <a
+                    href={project.internalUrl}
+                    className="btn btn-primary"
+                    {...(isExternalInternalUrl
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                  >
                     Pergi Ke <i className="bi bi-arrow-right ms-1"></i>
                   </a>
                 </div>
@@ -55,7 +70,9 @@ function ProjectPanel({ project, index }) {
       </div>
 
       <div className="project-panel-body">
-        <div className="project-panel-index">{String(index + 1).padStart(2, "0")}</div>
+        <div className="project-panel-index">
+          {String(index + 1).padStart(2, "0")}
+        </div>
         <h3 className="project-panel-title">
           <i className="bi bi-folder2-open me-2"></i>
           {project.title}
@@ -69,6 +86,16 @@ function ProjectPanel({ project, index }) {
             </span>
           ))}
         </div>
+        {project.secondtags?.length > 0 && (
+          <div className="project-panel-tags">
+            {project.secondtags.map((tagsecond) => (
+              <span className="badge project-badge me-1" key={tagsecond}>
+                <i className="bi bi-tag me-1"></i>
+                {tagsecond}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="d-flex flex-wrap gap-2 mt-3">
           {project.demoUrl && (
@@ -110,7 +137,11 @@ function Projects() {
   const revealRef = useReveal();
 
   return (
-    <section id="projects" className="section projects-section reveal" ref={revealRef}>
+    <section
+      id="projects"
+      className="section projects-section reveal"
+      ref={revealRef}
+    >
       <div className="container">
         <h2 className="section-title mb-2">Proyek</h2>
         <p className="projects-hint mb-4">
