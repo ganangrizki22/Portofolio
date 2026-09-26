@@ -85,6 +85,61 @@
     }
   }
 
+  // Tombol "Unduh CV" -- saat proses unduh berjalan (fetch berkas PDF),
+  // tombol dikunci sementara dan menampilkan spinner + label berbeda
+  // supaya pengguna tahu unduhan sedang diproses, bukan macet/diam saja.
+  .hero-download-btn {
+    &.is-loading {
+      pointer-events: none;
+      opacity: 0.85;
+
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  // Spinner "indeterminate" berbasis elemen <progress> native (lebih
+  // aksesibel buat pembaca layar dibanding <div> biasa), digambar pakai
+  // conic-gradient supaya terlihat seperti ring yang berputar.
+  .hero-download-spinner {
+    appearance: none;
+    display: inline-block;
+    vertical-align: -0.15em;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 90deg,
+        currentColor 158deg,
+        transparent 0
+      )
+      rgba($color-light, 0.25);
+    animation: heroDownloadSpin 0.8s linear infinite;
+
+    @supports (background-clip: border-area) {
+      background-clip: border-area;
+      border: 2px solid transparent;
+      background-origin: border-box;
+    }
+
+    @supports not (background-clip: border-area) {
+      mask-image: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+    }
+
+    &::-webkit-progress-bar,
+    &::-webkit-progress-value {
+      display: none;
+      background: none;
+    }
+
+    &::-moz-progress-bar {
+      display: none;
+      background: none;
+    }
+  }
+
   // Penanda "gulir ke bawah", hanya tampil di layar besar
   // supaya tidak menabrak konten saat hero tingginya auto di mobile.
   .hero-scroll-cue {
@@ -111,5 +166,17 @@
   }
   50% {
     transform: translate(-50%, 8px);
+  }
+}
+
+@keyframes heroDownloadSpin {
+  to {
+    rotate: 1turn;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-download-spinner {
+    animation-duration: 2.4s;
   }
 }

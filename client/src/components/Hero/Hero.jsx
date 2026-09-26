@@ -1,9 +1,46 @@
+import { useEffect, useRef, useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
 import { getProfile } from "../../services/api.js";
 import Skeleton from "../Skeleton/Skeleton.jsx";
+import Toast from "../Toast/Toast.jsx";
+
+// Lama spinner tampil sebelum toast konfirmasi muncul. Ini murni feedback
+// UI (bukan hasil pantauan progres jaringan yang sebenarnya) -- unduhan
+// file statis kecil seperti ini biasanya sudah selesai dalam sekejap,
+// jadi jeda ini sengaja dibuat supaya prosesnya tetap terasa oleh
+// pengguna, bukan cuma kedip sekilas.
+const DOWNLOAD_FEEDBACK_MS = 900;
 
 function Hero() {
   const { data: profile, loading } = useFetch(getProfile, []);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [toast, setToast] = useState({ show: false, tone: "success", message: "" });
+  const feedbackTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => clearTimeout(feedbackTimerRef.current);
+  }, []);
+
+  function handleDownloadResume() {
+    // SENGAJA tidak pakai fetch()/blob untuk mengunduh berkasnya sendiri.
+    // Atribut `download` native di bawah ini dibiarkan bekerja apa adanya
+    // supaya browser (atau ekstensi download manager seperti IDM/ADM, jika
+    // terpasang) yang menangani unduhannya langsung. Kalau unduhan di-
+    // fetch manual lewat JS, ekstensi semacam itu bisa meng-intercept
+    // request-nya dan membuat fetch() gagal/diblokir di level JS --
+    // padahal berkasnya tetap terunduh lewat ekstensi tsb -- sehingga kita
+    // salah menampilkan pesan error padahal unduhan sebenarnya berhasil.
+    // Spinner + toast di sini jadi murni indikator "proses lagi berjalan",
+    // dipicu independen dari status request jaringan mana pun.
+    if (isDownloading) return;
+
+    setIsDownloading(true);
+    clearTimeout(feedbackTimerRef.current);
+    feedbackTimerRef.current = setTimeout(() => {
+      setIsDownloading(false);
+      setToast({ show: true, tone: "success", message: "CV sedang diunduh." });
+    }, DOWNLOAD_FEEDBACK_MS);
+  }
 
   return (
     <section id="hero" className="hero d-flex align-items-center">
@@ -47,11 +84,28 @@ function Hero() {
                   {profile?.resumeUrl && (
                     <a
                       href={profile.resumeUrl}
-                      className="btn btn-outline-light btn-lg"
+                      className={`btn btn-outline-light btn-lg hero-download-btn${
+                        isDownloading ? " is-loading" : ""
+                      }`}
                       download={`Resume ${profile.name}.pdf`}
+                      onClick={handleDownloadResume}
+                      aria-disabled={isDownloading}
+                      aria-busy={isDownloading}
                     >
-                      <i className="bi bi-download me-2"></i>
-                      Unduh CV
+                      {isDownloading ? (
+                        <>
+                          <progress
+                            className="hero-download-spinner me-2"
+                            aria-label="Sedang memproses unduhan CV"
+                          ></progress>
+                          Menyiapkan CV...
+                        </>
+                      ) : (
+                        <>
+                          <i className="bi bi-download me-2"></i>
+                          Unduh CV
+                        </>
+                      )}
                     </a>
                   )}
                 </div>
@@ -88,6 +142,13 @@ function Hero() {
       >
         <i className="bi bi-chevron-down"></i>
       </a>
+
+      <Toast
+        show={toast.show}
+        tone={toast.tone}
+        message={toast.message}
+        onClose={() => setToast((prev) => ({ ...prev, show: false }))}
+      />
     </section>
   );
 }

@@ -1,0 +1,107 @@
+// =========================================
+// TOAST NOTIFIKASI
+// Feedback aksi singkat (mis. hasil unduh CV). Posisi fixed, melayang
+// di bagian bawah tengah layar; di mobile melebar penuh dengan margin
+// supaya tidak terpotong. Warna mengikuti variabel tema aktif (terang/
+// gelap) lewat --surface / --text-body / --border-subtle.
+// =========================================
+
+.app-toast {
+  position: fixed;
+  left: 50%;
+  right: auto;
+  bottom: 1.5rem;
+  z-index: 1080;
+  margin: 0;
+  inset-block-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: max-content;
+  max-width: min(90vw, 22rem);
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--surface);
+  color: var(--text-body);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
+
+  .app-toast-icon {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+  }
+
+  &.app-toast-success .app-toast-icon {
+    color: #16a34a;
+  }
+
+  &.app-toast-error .app-toast-icon {
+    color: #dc2626;
+  }
+
+  .app-toast-message {
+    flex: 1;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .app-toast-close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background-color: var(--surface-alt);
+      color: var(--text-body);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--text-body);
+      outline-offset: 2px;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: auto;
+    max-width: none;
+    transform: translateY(12px);
+
+    &.is-visible {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-toast {
+    transition: opacity 0.15s linear;
+    transform: translate(-50%, 0);
+
+    @media (max-width: 575.98px) {
+      transform: translateY(0);
+    }
+  }
+}
