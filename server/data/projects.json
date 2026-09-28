@@ -34,7 +34,7 @@
     "title": "Toko Online Ovelia — Busana Muslim",
     "description": "Platform e-commerce full-stack untuk busana muslim & perlengkapan ibadah: autentikasi akun dengan verifikasi email, wishlist dan keranjang belanja tersimpan per akun, checkout terintegrasi Midtrans (Virtual Account & QRIS), serta ongkos kirim real-time lewat RajaOngkir.",
     "tags": ["React", "Node.js", "Express", "PostgreSQL"],
-    "secondtags": ["Midtrans", "Rajaongkir", "SMTP"],
+    "secondtags": ["Midtrans", "Rajaongkir", "SMTP", "Fonnte"],
     "image": "/assets/projects/ovelia-app.jpg",
     "demoUrl": "",
     "repoUrl": "",
